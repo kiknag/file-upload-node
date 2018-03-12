@@ -1,4 +1,4 @@
-# File uploading with Node.js and Express
+# File upload with Node.js and Express
 
 Packages used:
 
