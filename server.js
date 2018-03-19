@@ -11,6 +11,24 @@ app.post('/upload', (req, res) => {
   if(!req.files) {
     return res.status(400).send('No files were uploaded.')
   }
+  
+  console.log(req.files.sampleFile.mimetype);
+  
+  // Check file type
+  let fileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  let isFileCompatible = false;
+
+  fileTypes.map(el => {
+    if(el === req.files.sampleFile.mimetype) {
+      isFileCompatible = true;
+    }
+    console.log(el);
+  });
+
+  // Go next or stop
+  if(!isFileCompatible) {
+    return res.status(500).send('File is not compatible');
+  }
 
   //console.log(req.files);
   let sampleFile = req.files.sampleFile;
